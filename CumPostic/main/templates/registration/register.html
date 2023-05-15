@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Register</h1>
+
+    <h3> Guys, please register on the site and you will get the opportunity
+to watch the hottest porn photos and videos on the Internet !!! :) :) :) Only if you are 18 years old !!! </h3>
+
+    <hr>
+
+    <form action="{% url 'main:register' %}" method="post">
+        {{ form }}
+        {% csrf_token %}
+    <button type="submit" class="btn btn-success">submit</button>
+    </form>
+{% endblock %}

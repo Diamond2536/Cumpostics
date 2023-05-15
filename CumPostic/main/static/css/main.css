@@ -1,0 +1,111 @@
+body {
+  background-color: rgb(255, 160, 200);
+}
+
+.main_name {
+  font-size: 42px;
+  font-family: Arial, sans-serif;
+  color: blue;
+  text-align: center;
+  width: 100%;
+}
+
+.logo-img {
+  float: left;
+  width: 10%;
+  height: 20%;
+}
+
+.main_name,
+.post_list,
+.categories,
+.post {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.registration {
+    float: right;
+    margin-right: 50px;
+}
+
+.post {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.post_list a {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.post_list p {
+  margin-bottom: 10px;
+}
+
+.post_type,
+.categories {
+  float: left;
+  margin-right: 20px;
+  clear: both;
+}
+
+.post_page {
+  display: block;
+  text-align: center;
+  max-width: 1200px;
+  margin: 5px auto 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0 5px;
+  text-align: center;
+}
+
+.pagination li.active {
+  font-weight: bold;
+}
+
+.new_comment form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new_comment input,
+.new_comment textarea {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.new_comment button {
+  margin-top: 10px;
+}
+
+.comment-wrapper {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.donate {
+    text-align: center;
+}

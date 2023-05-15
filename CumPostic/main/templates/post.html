@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.name }}</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<aside>
+    <a href="{% url 'main:index' %}">
+        <img class="logo-img" src="{% static 'image/Main_logo.png' %}" alt="Logo" width="120" height="120">
+    </a>
+</aside>
+<h1 class="main_name">CumPostic<br>
+    The best p...no content for you !!! :) :) :)
+</h1>
+
+<div class="post_page">
+<h3>{{ post.name }}</h3>
+  <p>{{ post.description }}</p>
+  <p>Published on {{ post.date }}</p>
+
+{% for file in post.post_files.all %}
+    {% if file.post_file.name|lower|slice:'-3:' == 'mp4' %}
+        <video src="{{ file.post_file.url }}" controls width="960" height="720"></video>
+    {% else %}
+        <img src="{{ file.post_file.url }}" alt="{{ file.post_file.url.name }}">
+    {% endif %}
+{% endfor %}
+</div>
+
+{% if not request.user.is_authenticated %}
+  <p>You need to <a href="{% url 'login' %}?next={{ request.path }}">log in</a> to leave a comment.</p>
+{% endif %}
+<div class="new_comment form">
+  <form method="POST" action="{% url 'main:post' id=post.id slug=post.slug %}">
+    {% if request.user.is_authenticated %}
+      <input type="hidden" name="user_name" value="{{ request.user.username }}">
+    {% endif %}
+    <textarea placeholder="Write your comment" name="text"> </textarea>
+    {% csrf_token %}
+    <button> Comment </button>
+  </form>
+  {% for comment in comments %}
+    <div class="comment-wrapper">
+      <h6>{{ comment.date }}</h6>
+      <h5>User: {{comment.user}}</h5>
+      <h6>Comment: {{comment.text}}</h6>
+    </div>
+  {% endfor %}
+</div>
+
+</body>
+</html>
